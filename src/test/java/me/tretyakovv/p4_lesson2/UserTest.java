@@ -50,9 +50,10 @@ public class UserTest {
     @Test
     public void loginAndEmailEqual() {
 
-        String loginUser1 = user1.getLogin();
-        String emailUser1 = user1.getEmail();
+        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            User user2 = new User("test", "test");
+        });
 
-        Assertions.assertFalse(loginUser1.equals(emailUser1));
+        Assertions.assertEquals("Exception: логин не должен быть равен email!", exception.getMessage());
     }
 }

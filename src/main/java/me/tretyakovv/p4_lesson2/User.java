@@ -1,5 +1,7 @@
 package me.tretyakovv.p4_lesson2;
 
+import java.io.IOException;
+
 public class User {
 
     private String login;
@@ -10,6 +12,9 @@ public class User {
     }
 
     public User(String login, String email) {
+        if (login.equals(email)) {
+            throw new IllegalArgumentException("Exception: логин не должен быть равен email!");
+        }
         this.login = login;
         this.email = email;
     }
